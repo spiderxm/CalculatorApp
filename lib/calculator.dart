@@ -76,13 +76,7 @@ class _CalculatorState extends State<Calculator> {
     }
     setState(() {
       output = double.parse(_output).toString();
-      if (double.parse(_output) >= 999999) {
-        fontsize = 35;
-      } else if (double.parse(_output) >= 9000000000) {
-        fontsize = 15;
-      } else if (double.parse(_output) >= 9000000000000) {
-        fontsize = 6;
-      }
+      fontsize = 50;
     });
   }
 
@@ -177,20 +171,18 @@ class _CalculatorState extends State<Calculator> {
                 )),
             Expanded(
               flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: Text(
                     output,
                     style: TextStyle(
                         fontSize: fontsize.toDouble(),
                         fontWeight: FontWeight.w700,
                         color: Text_color),
                   ),
-                  SizedBox(
-                    width: 30,
-                  )
-                ],
+                ),
               ),
             ),
             Expanded(
